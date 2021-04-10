@@ -18,10 +18,10 @@ type State interface {
 
 type States interface {
 	State
-	Generate()
-	ByStates([]State)
+	Generate() States
+	ByStates([]State) States
+	Of(...State) States
 	Add(State)
-	Of(...State)
 	Get(int) State
 	Set(int, State)
 	Size() int
@@ -37,20 +37,23 @@ type List struct {
 	data []State
 }
 
-func (list *List) Generate() {
+func (list *List) Generate() States {
 	list.data = make([]State, 0)
+	return list
 }
 
-func (list *List) ByStates(states []State) {
+func (list *List) ByStates(states []State) States {
 	list.data = states[:]
+	return list
 }
 
 func (list *List) Add(state State) {
 	list.data = append(list.data, state)
 }
 
-func (list *List) Of(states ...State) {
+func (list *List) Of(states ...State) States {
 	list.data = states[:]
+	return list
 }
 
 func (list *List) Get(index int) State {
