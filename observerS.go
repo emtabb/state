@@ -1,8 +1,6 @@
 package state
 
-type ObserverS struct {
-	State
-}
+type ObserverS struct { }
 
 func (o *ObserverS) Init() State {
 

@@ -1,7 +1,6 @@
 package state
 
 type List struct {
-	States
 	data []State
 }
 

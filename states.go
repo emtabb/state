@@ -1,7 +1,6 @@
 package state
 
 type States interface {
-	State
 	Generate() States
 	ByStates([]State) States
 	Of(...State) States
